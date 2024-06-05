@@ -1,4 +1,6 @@
 import createElement from '../helpers/domHelper';
+// import { getFighterInfo } from '../components/fighterSelector'
+// import fighterService from '../services/fightersService';
 
 export function createFighterPreview(fighter, position) {
     const positionClassName = position === 'right' ? 'fighter-preview___right' : 'fighter-preview___left';
@@ -8,7 +10,7 @@ export function createFighterPreview(fighter, position) {
     });
 
     // todo: show fighter info (image, name, health, etc.)
-    const fighterInfo = 0;
+    // const fighterInfo = getFighterInfo(fighter.id);
 
     return fighterElement;
 }
@@ -28,3 +30,6 @@ export function createFighterImage(fighter) {
 
     return imgElement;
 }
+
+// const fighterInfo = getFighterInfo(3);
+// console.log(fighterInfo)

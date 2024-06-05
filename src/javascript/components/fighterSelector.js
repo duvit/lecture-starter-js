@@ -9,12 +9,23 @@ const fighterDetailsMap = new Map();
 export async function getFighterInfo(fighterId) {
     // get fighter info from fighterDetailsMap or from service and write it to fighterDetailsMap
 
-    const fighterDetails = await fighterService.getFighterDetails(fighterId)
- 
-    for (const [key, value] of Object.entries(fighterDetails)) {
-        fighterDetailsMap.set(key, value)
+    if (fighterDetailsMap.has(fighterId)) {
+        return fighterDetailsMap.get(fighterId);
     }
 
+    let fighterDetails;
+
+    try {
+        fighterDetails = await fighterService.getFighterDetails(fighterId);
+    } catch (error) {
+        throw new Error(`Не вдалося отримати дані про бійця з ID ${fighterId}: ${error.message}`);
+    }
+
+    // Збереження даних у кеш за ключем fighterId
+    fighterDetailsMap.set(fighterId, fighterDetails);
+
+    // Повернення даних без копіювання посилань
+    return { ...fighterDetails };
 }
 
 function startFight(selectedFighters) {
@@ -67,5 +78,3 @@ export function createFightersSelector() {
         renderSelectedFighters(selectedFighters);
     };
 }
-
-
