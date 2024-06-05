@@ -13,19 +13,13 @@ export async function getFighterInfo(fighterId) {
         return fighterDetailsMap.get(fighterId);
     }
 
-    let fighterDetails;
-
     try {
-        fighterDetails = await fighterService.getFighterDetails(fighterId);
+        const fighterDetails = await fighterService.getFighterDetails(fighterId);
+        fighterDetailsMap.set(fighterId, fighterDetails);
+        return fighterDetails;
     } catch (error) {
-        throw new Error(`Не вдалося отримати дані про бійця з ID ${fighterId}: ${error.message}`);
+        throw error;
     }
-
-    // Збереження даних у кеш за ключем fighterId
-    fighterDetailsMap.set(fighterId, fighterDetails);
-
-    // Повернення даних без копіювання посилань
-    return { ...fighterDetails };
 }
 
 function startFight(selectedFighters) {
