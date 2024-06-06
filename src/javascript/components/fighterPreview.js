@@ -8,44 +8,45 @@ export function createFighterPreview(fighter, position) {
         className: `fighter-preview___root ${positionClassName}`
     });
 
-    console.log(fighter._id);
     // todo: show fighter info (image, name, health, etc.)
 
     getFighterInfo(fighter._id)
         .then(fighterInfo => {
             const { name, health, attack, defense, source } = fighterInfo;
 
-            const imgElement = createElement({
-                tagName: 'img',
-                className: 'fighter-image',
-                src: source
+            const previewElement = createElement({
+                tagName: 'div',
+                className: `fighter-preview___container`
             });
+
+            const imgElement = createFighterImage(fighter);
 
             const nameElement = createElement({
                 tagName: 'span',
-                className: 'fighter-name',
+                className: 'fighter-prewiev__name',
                 content: `Name: ${name}`
             });
 
             const healthElement = createElement({
                 tagName: 'span',
-                className: 'fighter-health',
+                className: 'fighter-prewiev__health',
                 content: `Health: ${health}`
             });
 
             const attackElement = createElement({
                 tagName: 'span',
-                className: 'fighter-attack',
+                className: 'fighter-prewiev__attack',
                 content: `Attack: ${attack}`
             });
 
             const defenseElement = createElement({
                 tagName: 'span',
-                className: 'fighter-defense',
+                className: 'fighter-prewiev__defense',
                 content: `Defense: ${defense}`
             });
 
-            fighterElement.append(imgElement, nameElement, healthElement, attackElement, defenseElement);
+            previewElement.append(imgElement, nameElement, healthElement, attackElement, defenseElement);
+            fighterElement.append(previewElement);
         })
         .catch(error => {
             throw error;
