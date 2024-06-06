@@ -17,8 +17,8 @@
 }
 
 .fighter-preview___container {
-    /* height: 400px; */
     background-color: aqua;
+    display: flex;
     flex-direction: column;
 }
 
@@ -27,6 +27,8 @@
     width: 100%;
 }
 .fighter-prewiev__name {
+    text-align: center;
+    font-size: 2rem;
 }
 .fighter-prewiev__health {
 }
