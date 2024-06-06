@@ -1,13 +1,36 @@
 .fighter-preview___root {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 250px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 250px;
 }
 
 .fighter-preview___right {
-  align-items: flex-end;
+    align-items: flex-end;
+}
+
+.fighter-preview___right .fighter-preview___img {
+    transform: scaleX(-1);
 }
 
 .fighter-preview___left {
-  align-items: flex-start;
+    align-items: flex-start;
+}
+
+.fighter-preview___container {
+    /* height: 400px; */
+    background-color: aqua;
+    flex-direction: column;
+}
+
+.fighter-preview___img {
+    height: 400px;
+    width: 100%;
+}
+.fighter-prewiev__name {
+}
+.fighter-prewiev__health {
+}
+.fighter-prewiev__attack {
+}
+.fighter-prewiev__defense {
 }
