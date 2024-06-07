@@ -1,5 +1,13 @@
 import showModal from './modal';
+import createElement from '../../helpers/domHelper';
 
 export default function showWinnerModal(fighter) {
-    // call showModal function
+    const title = 'Fight Result';
+    const bodyElement = createElement({
+        tagName: 'div',
+        className: 'modal-body'
+    });
+    bodyElement.textContent = `${fighter.name} is the winner!`;
+
+    showModal({ title, bodyElement });
 }

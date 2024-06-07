@@ -8,8 +8,6 @@ export function createFighterPreview(fighter, position) {
         className: `fighter-preview___root ${positionClassName}`
     });
 
-    // todo: show fighter info (image, name, health, etc.)
-
     getFighterInfo(fighter._id)
         .then(fighterInfo => {
             const { name, health, attack, defense, source } = fighterInfo;
@@ -23,29 +21,32 @@ export function createFighterPreview(fighter, position) {
 
             const nameElement = createElement({
                 tagName: 'span',
-                className: 'fighter-prewiev__name',
-                content: `Name: ${name}`
+                className: 'fighter-prewiev__name'
             });
+            nameElement.textContent = `${name}`;
 
             const healthElement = createElement({
                 tagName: 'span',
-                className: 'fighter-prewiev__health',
-                content: `Health: ${health}`
+                className: 'fighter-prewiev__health'
             });
+            healthElement.textContent = `Health: ${health}`;
 
             const attackElement = createElement({
                 tagName: 'span',
                 className: 'fighter-prewiev__attack',
                 content: `Attack: ${attack}`
             });
+            attackElement.textContent = `Attack: ${attack}`;
 
             const defenseElement = createElement({
                 tagName: 'span',
                 className: 'fighter-prewiev__defense',
                 content: `Defense: ${defense}`
             });
+            defenseElement.textContent = `Defense: ${defense}`;
 
-            previewElement.append(imgElement, nameElement, healthElement, attackElement, defenseElement);
+            previewElement.prepend(nameElement);
+            previewElement.append(imgElement, healthElement, attackElement, defenseElement);
             fighterElement.append(previewElement);
         })
         .catch(error => {
@@ -70,6 +71,3 @@ export function createFighterImage(fighter) {
 
     return imgElement;
 }
-
-// const fighterInfo = getFighterInfo(3);
-// console.log(fighterInfo)
