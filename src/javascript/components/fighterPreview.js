@@ -8,8 +8,6 @@ export function createFighterPreview(fighter, position) {
         className: `fighter-preview___root ${positionClassName}`
     });
 
-    // todo: show fighter info (image, name, health, etc.)
-
     getFighterInfo(fighter._id)
         .then(fighterInfo => {
             const { name, health, attack, defense, source } = fighterInfo;
@@ -73,6 +71,3 @@ export function createFighterImage(fighter) {
 
     return imgElement;
 }
-
-// const fighterInfo = getFighterInfo(3);
-// console.log(fighterInfo)
