@@ -37,6 +37,8 @@
     padding: 1rem;
     color: #00ff00;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .close-btn {
